@@ -42,11 +42,15 @@ class _MyAppState extends State<MyApp> {
     try {
       final perm = await Permission.bluetoothConnect.request();
       await _rutokenFlutterPlugin.initialize(
-        types: [RutokenDeviceType.bluetooth, RutokenDeviceType.usb],
+        types: [RutokenDeviceType.bluetooth],
       );
-      sub = _rutokenFlutterPlugin.deviceStream.listen((data) {
+      sub = _rutokenFlutterPlugin.deviceStream.listen((data) async {
         print(data.firstOrNull?.name);
-        sub?.cancel();
+        await sub?.cancel();
+        sub = _rutokenFlutterPlugin.deviceStream.listen((_) {
+          print(data.firstOrNull?.name);
+          sub?.cancel();
+        });
       });
       platformVersion = 'Success';
     } on PlatformException {

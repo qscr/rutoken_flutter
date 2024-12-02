@@ -1,6 +1,6 @@
 name: rutoken_flutter
 description: Обнаружение устройств "Рутокен"
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/qscr/rutoken_flutter
 
 environment:

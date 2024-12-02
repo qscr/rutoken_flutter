@@ -45,7 +45,8 @@ class MethodChannelRutokenFlutter extends RutokenFlutterPlatform {
     });
   }
 
-  late final _deviceStreamController = StreamController<List<RutokenDevice>>(
+  late final _deviceStreamController =
+      StreamController<List<RutokenDevice>>.broadcast(
     onListen: onListenCallback,
     onCancel: () {
       _eventSubscription?.cancel();
